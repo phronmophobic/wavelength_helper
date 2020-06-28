@@ -197,11 +197,13 @@
     loadJSON("/static/wavelength_cards.json",
              function(cards){
                cardList = cardList.concat(cards);
+               console.log("cards loaded: " + cards.length);
                $('randomCardContainer').style.display = null;
              });
     loadJSON("/static/wavelength_cards_advanced.json",
              function(cards){
                cardList = cardList.concat(cards);
+               console.log("cards loaded: " + cards.length);
                $('randomCardContainer').style.display = null;
              });
   </script>
