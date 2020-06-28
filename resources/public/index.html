@@ -181,6 +181,27 @@
         $('cardNumLabel').style.display = null;
       }
     }
+
+    function loadJSON(url, callback){
+      let request = new XMLHttpRequest();
+      request.open('GET', url);
+      request.responseType = 'json';
+      request.send();
+      request.onload = function() {
+        callback(request.response);
+      }
+    }
+
+    loadJSON("/static/wavelength_cards.json",
+             function(cards){
+               cardList = cardList.concat(cards);
+               $('randomCardContainer').style.display = null;
+             });
+    loadJSON("/static/wavelength_cards_advanced.json",
+             function(cards){
+               cardList = cardList.concat(cards);
+               $('randomCardContainer').style.display = null;
+             });
   </script>
 
   <script>
@@ -709,6 +730,9 @@
               });
               startRound(msg);
               ws.send(JSON.stringify(msg));
+
+              pickRandomCard();
+
               redraw();
             }
 
