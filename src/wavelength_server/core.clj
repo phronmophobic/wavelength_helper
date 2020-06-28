@@ -87,6 +87,9 @@
    ;; (GET "/" [] (response/resource-response "index.html" {:root "public"}))
    (GET "/" [] "You need to specify a room. Try http://wavelength.smith.rocks/roomName")
    (GET "/:room{[a-zA-Z0-9.\\-]+}" [] (response/resource-response "index.html" {:root "public"}))
+
+   (GET "/static/:path{.*.json}" {{path :path} :route-params}
+        (response/resource-response path {:root "public"}))
    (GET "/bar" [] "Hello Bar")
    (route/not-found "Not Found2"))
   )
