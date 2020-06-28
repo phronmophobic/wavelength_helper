@@ -157,6 +157,8 @@
   </form>
 
   <script>
+    var $ = function (id) { return document.getElementById(id); };
+
     var cardList = [];
 
     function loadCardFile() {
@@ -633,7 +635,7 @@
       });
     }
 
-    var $ = function (id) { return document.getElementById(id); };
+
 
     var uid = uuidv4();
     var userData;
